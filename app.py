@@ -84,24 +84,24 @@ def prediction_page():
     constituency_votes_polled = st.number_input("Constituency Votes Polled", min_value=0)
     total_votes_by_parties = st.number_input("Total Votes by Parties", min_value=0)
 
-    evm_votes_hashed = hashlib.sha256(str(evm_votes).encode()).hexdigest()
-    postal_votes_hashed = hashlib.sha256(str(postal_votes).encode()).hexdigest()
-    total_votes_hashed = hashlib.sha256(str(total_votes).encode()).hexdigest()
-    percent_of_votes_hashed = hashlib.sha256(str(percent_of_votes).encode()).hexdigest()
-    constituency_votes_polled_hashed = hashlib.sha256(str(constituency_votes_polled).encode()).hexdigest()
-    total_votes_by_parties_hashed = hashlib.sha256(str(total_votes_by_parties).encode()).hexdigest()
+    # evm_votes_hashed = hashlib.sha256(str(evm_votes).encode()).hexdigest()
+    # postal_votes_hashed = hashlib.sha256(str(postal_votes).encode()).hexdigest()
+    # total_votes_hashed = hashlib.sha256(str(total_votes).encode()).hexdigest()
+    # percent_of_votes_hashed = hashlib.sha256(str(percent_of_votes).encode()).hexdigest()
+    # constituency_votes_polled_hashed = hashlib.sha256(str(constituency_votes_polled).encode()).hexdigest()
+    # total_votes_by_parties_hashed = hashlib.sha256(str(total_votes_by_parties).encode()).hexdigest()
 
     # Create a sample data point for prediction
     sample_data = pd.DataFrame({
-        'EVM_Votes': [evm_votes_hashed],
-        'Postal_Votes': [postal_votes_hashed],
-        'Total_Votes': [total_votes_hashed],
-        '%_of_Votes': [percent_of_votes_hashed],
-        'Tot_Constituency_votes_polled': [constituency_votes_polled_hashed],
-        'Tot_votes_by_parties': [total_votes_by_parties_hashed]
+        'EVM_Votes': [evm_votes],
+        'Postal_Votes': [postal_votes],
+        'Total_Votes': [total_votes],
+        '%_of_Votes': [percent_of_votes],
+        'Tot_Constituency_votes_polled': [constituency_votes_polled],
+        'Tot_votes_by_parties': [total_votes_by_parties]
     })
 
-    st.write(f"Hashed EVM Votes: {evm_votes_hashed}")
+   
     # Ensure that the feature names match the ones used during training
     missing_features = set(X.columns) - set(sample_data.columns)
     if missing_features:
@@ -134,3 +134,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
